@@ -21,7 +21,7 @@ edge(c,b).
 edge(a,c).
 edge(c,a).
 ```
-Also list of vertices is created: `Vertices = [a,b,c]`.
+Also list of all vertices is created: `Vertices = [a,b,c]`.
 
 ### Finding Hamilton cycles
 
@@ -49,7 +49,7 @@ This predicate searches for all paths from vertex A to A (Since starting vertex 
 A is chosen arbitrarily as the first vertex in `Vertices`.) and returns only those that visit every vertex (This is 
 checked by asking if all known vertices `Vertices` are subset of vertices that are part of found cycle.) 
 
-So now every possible path from A to B that visits every vertex is calculated and stored in a list. However, this list
+So now every possible path from A to A that visits every vertex is calculated and stored in a list. However, this list
 contains 'duplicate' paths, such as `[a,b,c,a]` and it's mirror `[a,c,b,a]` (these are different paths, but same cycles). These are filtered in `uniquePaths/2`
 predicate. Specifically, by predicate `noMirrors/3`:
 
@@ -89,6 +89,34 @@ main :-
 2. To run program, run `./flp23-log < <example_input.in>`.\
    where `<example_input.in>` is text file containing graph representation as it was described in the assignement.
 3. Run `make clean` to delete binary `flp23-log`.
+
+## Input / Output formatting
+Program expects certain formatting of input. Vertices are always denoted by capital letters of english alphabet.
+Individual lines (one line - one edge in graph) are formatted such as `<V1> <V2>`. Separator is space character.
+File should not end with new line.  
+Example with 5 edges:
+```
+A B
+A C
+A D
+B C
+C D
+```
+Output example:
+```
+A-B A-C A-D
+A-B A-C C-D
+A-B A-D B-C
+A-B A-D C-D
+A-B B-C C-D
+A-C A-D B-C
+A-C B-C C-D
+A-D B-C C-D
+```
+
+
+
+
 
 
 ## Known problems
