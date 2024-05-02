@@ -105,7 +105,7 @@ printCycle([V1,V2|T]) :-
     printSeparator([V1,V2|T], ' '), % ensures, that there is no trailing space at the end of the line
     printCycle([V2|T]).
 
-% Prints separator only if there are more (or less, but that never utilized) then three two items in a list
+% Prints separator only if there are more (or less, but that never utilized) then two items in a list
 % printSeparator(+List, +Separator)
 printSeparator([_,_|[]], _).
 printSeparator(_,S) :-
@@ -119,7 +119,7 @@ printSeparator(_,S) :-
 % Checks if Item is present in List
 % member(+Item, +List)
 member(X,[X|_]).
-member(X,[_|T])  :-  member(X,T).
+member(X,[_|T]) :- member(X,T).
 
 
 % Checks, if ListA is subset of ListB
@@ -166,7 +166,7 @@ prepend([H|In], Char, Int, Out) :-
     prepend(In, Char, [[Char|H]|Int], Out).
 
 
-% Returs those items from list, whose mirror also is in that list
+% Removes those items from the list, whose mirror also is in that list
 % noMirrors(+List, ?Intermediary, -Result)
 noMirrors([], Out, Out).
 noMirrors([H|T], Int, Out) :-
@@ -175,3 +175,5 @@ noMirrors([H|T], Int, Out) :-
     noMirrors(T,Int,Out). % if it is, remove head from the list (it's mirror will stay in the list)
 noMirrors([H|T], Int, Out) :-
     noMirrors(T, [H|Int], Out). % if it is not, keep it in the list
+
+
