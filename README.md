@@ -120,7 +120,7 @@ A-D B-C C-D
 
 
 ## Known problems
-Program is not very optimal. As an example, a star graph with 9 vertices and 36 edges,
+Program is not very fast. As an example, a star graph with 9 vertices and 36 edges,
 (all vertices are connected), which has 20160 unique Hamilton cycles took 2 minutes to solve
 on my local machine and 1 minute on server provided by the university (Merlin).
 
